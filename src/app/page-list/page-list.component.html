@@ -1,1 +1,27 @@
-<p>page-list works!</p>
+<div class="box" *ngIf="pages.length > 0">
+  <h1>{{ pages.length }} pages found</h1>
+  <table class="table is-striped">
+    <thead>
+      <tr>
+        <th>Title</th>
+        <th>Word count</th>
+        <th>Snipppet</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let page of pages">
+        <td>
+          <a
+            [href]="'https://en.wikipedia.org/?curid=' + page.pageid"
+            target="_blank"
+            >{{ page.title }}</a
+          >
+        </td>
+        <td>
+          {{ page.wordcount }}
+        </td>
+        <td [innerHTML]="page.snippet"></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
